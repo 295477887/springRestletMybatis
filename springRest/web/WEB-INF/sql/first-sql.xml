@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chen.mybatis">
+    <select id="queryOneCar" resultMap="carMapper" >
+        select * from ixintui_table where msgid= #{msgId}
+    </select>
+
+    <select id="queryCarList" resultMap="carMapper" >
+        select * from ixintui_table where msgid LIKE '73309%'
+    </select>
+
+    <select id="queryCarMap" resultType="java.util.HashMap" >
+        select * from ixintui_table where msgid='733095477'
+    </select>
+
+    <update id="updateCity" >
+        update city_list set engineno='0' where city_code='jinan'
+    </update>
+
+    <resultMap id="carMapper" type="com.chen.rest.IxintuiBean">
+        <result property="messageId" column="msgid" javaType="java.lang.String"></result>
+        <result property="plateNumber" column="plate_number" javaType="java.lang.String"></result>
+        <result property="token" column="token" javaType="java.lang.String"></result>
+    </resultMap>
+</mapper>
